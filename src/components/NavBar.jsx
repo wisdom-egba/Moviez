@@ -5,6 +5,9 @@ import { motion } from "framer-motion"
 
 export const NavBar = () => {
   const [toggle, setToggle] = useState(false)
+  const handleClickAway = () => {
+    setToggle(!toggle)
+  }
   return (
     <div>
       {/* <Link to="/bookmark">Bookmark</Link>
@@ -13,11 +16,11 @@ export const NavBar = () => {
         <div className="shadow-lg py-2  ">
           <div className=" relative flex bg-[#FFFF] justify-between items-center max-w-[90%] md:max-w-[85%] lg:max-w-[70%] m-auto mt-4">
             <div className="">
-              <a href="#">
-                <h1>
+              <Link to="/">
+                <h1 className="font-bold">
                   MOVIE <span>Z</span>
                 </h1>
-              </a>
+              </Link>
             </div>
             <div className="hidden md:flex">
               <ul className="outline-none uppercase flex gap-8 tracking-wider text-[15px]">
@@ -29,19 +32,24 @@ export const NavBar = () => {
 
                 <Link to="/bookmark">
                   <li>
-                    <a href="#pricing">Pricing</a>
+                    <a href="#pricing">bookmark</a>
                   </li>
                 </Link>
 
                 <Link to="/categories">
                   <li>
-                    <a href="#experience">About us</a>
+                    <a href="#experience">categories</a>
                   </li>
                 </Link>
               </ul>
             </div>
-            <div className="md:hidden" onClick={() => setToggle(!toggle)}>
-              <Hamburger size={25} duration={0.5} />
+            <div className="md:hidden">
+              <Hamburger
+                toggled={toggle}
+                toggle={handleClickAway}
+                size={25}
+                duration={0.5}
+              />
             </div>
           </div>
           <motion.div
@@ -54,9 +62,13 @@ export const NavBar = () => {
                 : "hidden absolute"
             }
           >
-            <ul className="p-1 text-center uppercase ">
+            <ul
+              className="p-1 text-center uppercase "
+              onClick={handleClickAway}
+            >
               <Link to="/">
-                <a href="" className="font-semibold">
+                {" "}
+                <a href="" className="font-semibold" onClick={handleClickAway}>
                   <li className="p-2 cursor-pointer my-6 hover:bg-gray-100  ">
                     home
                   </li>
@@ -64,7 +76,7 @@ export const NavBar = () => {
               </Link>
 
               <Link to="/bookmark">
-                <a href="" className="font-semibold">
+                <a href="" className="font-semibold" onClick={handleClickAway}>
                   <li className="p-2 cursor-pointer my-6 hover:bg-gray-100  ">
                     bookmark
                   </li>
