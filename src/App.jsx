@@ -11,12 +11,14 @@ import {
 import { NavBar } from "./components/NavBar"
 import { Home } from "./components/Home"
 import { Bookmark } from "./components/Bookmark"
+import { Categories } from "./components/Categories"
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
         <Route index element={<Home />} />
         <Route path="/bookmark" element={<Bookmark />} />
+        <Route path="/categories" element={<Categories />} />
       </Route>
     )
   )
